@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Sentence
 {
@@ -6,22 +7,13 @@ namespace Sentence
     {
         public static void Main(string[] args)
         {
-            string inputString = string.Empty;
-            string process = string.Empty;
-            CommandContext cc = CommandContext.GetCommands;
+            var serviceProvider = new ServiceCollection()
+           .AddSingleton<ICommandContext, CommandContext>()
+           .AddSingleton<ISentenceProcess, SentenceProcess>()
+           .BuildServiceProvider();
 
-            Console.WriteLine("Please enter a sentence / word :");
-            inputString = Console.ReadLine();
-
-            Console.WriteLine("Please choose your process :");
-            Console.WriteLine("1 Reverse sentence.");
-            Console.WriteLine("2 Reverse word.");
-
-            process = Console.ReadLine();
-            string result = cc.GetCommand(process).GetOutput(inputString);
-
-            Console.WriteLine(result);
-            Console.ReadLine();
+            var sentence = serviceProvider.GetService<ISentenceProcess>();
+            sentence.Process();
         }
     }
 }
