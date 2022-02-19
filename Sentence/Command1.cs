@@ -26,11 +26,7 @@ namespace Sentence
                     words = input.Split(' ').ToList();
 
                     words.Reverse();
-                    result = words.First();
-                    words.Remove(words.First());
-
-                    foreach (string word in words)
-                        result += $" {word}";
+                    result = string.Join(" ", words);
                 }
                 
                 return result;

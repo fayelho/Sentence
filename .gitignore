@@ -6,3 +6,5 @@
 /packages
 /Sentence/obj/Debug
 /Sentence/bin/Debug
+/NUnitTest/bin/Debug/netcoreapp3.1
+/NUnitTest/obj
