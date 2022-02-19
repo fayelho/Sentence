@@ -1,13 +1,15 @@
-﻿using System;
+using System;
 namespace Sentence
 {
     public class SentenceProcess : ISentenceProcess
     {
         public readonly CommandContext _context;
+
         public SentenceProcess()
         {
             _context = CommandContext.GetCommands;
         }
+
         public void Process()
         {
             string inputString = string.Empty;
@@ -21,10 +23,10 @@ namespace Sentence
             Console.WriteLine("2 Reverse word.");
 
             process = Console.ReadLine();
-            
-            string result = _context.GetCommand(process).GetOutput(inputString);
 
+            string result = _context.GetCommand(process).GetOutput(inputString);
             Console.WriteLine(result);
+
             Console.ReadLine();
         }
     }
