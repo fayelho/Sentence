@@ -15,14 +15,22 @@ namespace Sentence
             string inputString = string.Empty;
             string process = string.Empty;
 
-            Console.WriteLine("Please enter a sentence / word :");
-            inputString = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Please enter a sentence / word :");
+                inputString = Console.ReadLine();
 
-            Console.WriteLine("Please choose your process :");
-            Console.WriteLine("1 Reverse sentence.");
-            Console.WriteLine("2 Reverse word.");
+            } while (string.IsNullOrEmpty(inputString) || string.IsNullOrWhiteSpace(inputString));
 
-            process = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Please choose your process :");
+                Console.WriteLine("1 Reverse sentence.");
+                Console.WriteLine("2 Reverse word.");
+
+                process = Console.ReadLine();
+
+            } while (process != "1" && process != "2");
 
             string result = _context.GetCommand(process).GetOutput(inputString);
             Console.WriteLine(result);
