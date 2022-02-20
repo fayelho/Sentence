@@ -17,6 +17,7 @@ namespace NUnitTest
         {
             _context = CommandContext.GetCommands;
             _expectedOutput = string.Empty;
+            _actualOutput = string.Empty;
         }
 
         [TestCase("Hi, how are you?")]
